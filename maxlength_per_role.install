@@ -1,0 +1,23 @@
+<?php
+// $Id$
+/**
+ * @file
+ * Install file for the maxlength per role module
+ */
+
+/**
+ * Implementation of hook_unistall().
+ */
+function maxlength_per_role_uninstall() {
+  
+  // Delete all of the CCK text field variables
+  // Retrieve an array of all of the available field machine names
+  $list = array_keys(content_fields(NULL, NULL));
+  // For each field in the array of names, delete the variables for each of the possible settings
+  foreach ($list as $field) {
+    $labels = array('_enable_per_role_maxlength', '_per_role_maxlength_limit', '_per_role_maxlength_roles', '_per_role_maxlength_text');
+    foreach ($labels as $label) {
+      variable_del(MAXLENGTH_PER_ROLE_NODE_TYPE . $field . $label);
+    }
+  }// END foreach ($list as $field)
+}

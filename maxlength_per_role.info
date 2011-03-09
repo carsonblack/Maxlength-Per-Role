@@ -1,0 +1,6 @@
+; $Id$
+
+name = "Maxlength Per Role"
+description = "Set a maximum length for CCK text fields for specified roles."
+core = 6.x
+dependencies[] = maxlength
