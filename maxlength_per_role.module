@@ -153,7 +153,7 @@ function _maxlength_per_role_format_element(&$element, $value = '', $field, $id,
   // If maxlength per role settings have been set for this field and this user has a role that is supposed to be limited 
   // proceed with adding limiting to this field.
   if ($values !== FALSE AND isset($values['per_role_maxlength_limit']) AND $values['per_role_maxlength_limit'] AND isset($values['enable_per_role_maxlength']) AND $values['enable_per_role_maxlength'] AND $enable_for_this_user) {
-    $remaining = $values['per_role_maxlength_limit'] - drupal_strlen($value);
+    $remaining = $values['per_role_maxlength_limit'] - drupal_strlen(str_replace("\r\n", "\n",$value));
     
     // Add the maxlength javascript from the maxlength module to the page
     $path = drupal_get_path('module', 'maxlength');
